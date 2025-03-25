@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+ 
+        .navbar {
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+ 
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+ 
+        .navbar .search-bar {
+            width: 40%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+        }
+ 
+        .nav-icons button {
+            background: #ff6600;
+            border: none;
+            padding: 8px 12px;
+            color: white;
+            cursor: pointer;
+        }
+ 
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+ 
+        .filters {
+            width: 18%;
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+ 
+        .filters h3 {
+            margin-bottom: 15px;
+            text-align: center;
+            background: #ff6600;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+ 
+        .filter-section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+ 
+        .filter-section h4 {
+            margin-bottom: 8px;
+            color: #333;
+        }
+ 
+        .filter-section label {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+ 
+        .filter-section input {
+            margin-right: 10px;
+        }
+ 
+        .filter-section input[type="range"] {
+            width: 100%;
+        }
+ 
+        .products {
+            width: 80%;
+            margin-left: 2%;
+        }
+ 
+        .products h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+ 
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-between;
+        }
+ 
+        .product-card {
+            width: 30%;
+            background: white;
+            padding: 15px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+ 
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+ 
+        .product-card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+ 
+        .discount {
+            background: green;
+            color: white;
+            padding: 5px;
+            font-size: 12px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 3px;
+        }
+ 
+        .product-card h3 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+ 
+        .clear-filters {
+            background: #ff6600;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 5px;
+        }
+ 
+        .clear-filters:hover {
+            background: #e65c00;
+        }
+ 
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+ 
+            .filters {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+ 
+            .products {
+                width: 100%;
+                margin-left: 0;
+            }
+ 
+            .product-card {
+                width: 45%;
+            }
+        }
+    </style>
+</head>
+ 
+<body>
+ 
+    <nav class="navbar">
+        <div class="logo">FITGEAR</div>
+        <input type="text" placeholder="Search Products, Categories, Brands and More" class="search-bar">
+        <div class="nav-icons">
+            <button>Login</button>
+            <button>Cart 🛒</button>
+        </div>
+    </nav>
+ 
+    <div class="container">
+ 
+        <aside class="filters">
+            <h3>Filter Products</h3>
+ 
+            <div class="filter-section">
+                <h4>Category</h4>
+                <label><input type="checkbox" class="filter-category" value="Whey Protein"> Whey Protein</label>
+                <label><input type="checkbox" class="filter-category" value="Vegan Protein"> Vegan Protein</label>
+                <label><input type="checkbox" class="filter-category" value="Protein Blends"> Protein Blends</label>
+                <label><input type="checkbox" class="filter-category" value="Mass Gainers"> Mass Gainers</label>
+            </div>
+ 
+            <div class="filter-section">
+                <h4>Discount</h4>
+                <label><input type="checkbox" class="filter-discount" value="10%"> 10% or more</label>
+                <label><input type="checkbox" class="filter-discount" value="20%"> 20% or more</label>
+                <label><input type="checkbox" class="filter-discount" value="30%"> 30% or more</label>
+                <label><input type="checkbox" class="filter-discount" value="40%"> 40% or more</label>
+            </div>
+ 
+            <div class="filter-section">
+                <h4>Price Range</h4>
+                <input type="range" min="500" max="5000" class="filter-price">
+            </div>
+ 
+            <div class="filter-section">
+                <h4>Brand</h4>
+                <label><input type="checkbox" class="filter-brand" value="Nutrabay"> Nutrabay</label>
+                <label><input type="checkbox" class="filter-brand" value="ON"> ON (Optimum Nutrition)</label>
+                <label><input type="checkbox" class="filter-brand" value="MuscleBlaze"> MuscleBlaze</label>
+                <label><input type="checkbox" class="filter-brand" value="MyProtein"> MyProtein</label>
+            </div>
+ 
+            <div class="filter-section">
+                <h4>Ratings</h4>
+                <label><input type="checkbox" class="filter-rating" value="4"> 4★ & Above</label>
+                <label><input type="checkbox" class="filter-rating" value="3"> 3★ & Above</label>
+            </div>
+ 
+            <div class="filter-section">
+                <h4>Flavour</h4>
+                <label><input type="checkbox" class="filter-flavour" value="Chocolate"> Chocolate</label>
+                <label><input type="checkbox" class="filter-flavour" value="Vanilla"> Vanilla</label>
+                <label><input type="checkbox" class="filter-flavour" value="Strawberry"> Strawberry</label>
+                <label><input type="checkbox" class="filter-flavour" value="Cookies & Cream"> Cookies & Cream</label>
+            </div>
+ 
+            <div class="filter-section">
+                <h4>Servings</h4>
+                <label><input type="checkbox" class="filter-servings" value="30 Servings"> 30 Servings</label>
+                <label><input type="checkbox" class="filter-servings" value="60 Servings"> 60 Servings</label>
+                <label><input type="checkbox" class="filter-servings" value="90 Servings"> 90 Servings</label>
+            </div>
+ 
+            <div class="filter-section">
+                <h4>Goal</h4>
+                <label><input type="checkbox" class="filter-goal" value="Muscle Gain"> Muscle Gain</label>
+                <label><input type="checkbox" class="filter-goal" value="Weight Loss"> Weight Loss</label>
+                <label><input type="checkbox" class="filter-goal" value="Recovery"> Recovery</label>
+            </div>
+ 
+            <button class="clear-filters">Clear Filters</button>
+ 
+        </aside>
+ 
+        <section class="products">
+            <h2>Protein Powders</h2>
+            <div class="product-grid" id="productGrid">
+                <!-- Dynamic product cards will be inserted here -->
+            </div>
+        </section>
+ 
+    </div>
+ 
+    <script>
+        const products =
+        [
+    { "name": "C4 Original Pre-Workout", "price": "₹1,799", "discount": "25%", "category": "Pre-Workout", "brand": "Cellucor", "rating": 4, "flavour": "Fruit Punch", "servings": "30 Servings", "goal": "Energy & Focus", "image": "https://via.placeholder.com/300x200?text=C4+Original+Pre-Workout" },
+    { "name": "N.O.-Xplode", "price": "₹2,099", "discount": "20%", "category": "Pre-Workout", "brand": "BSN", "rating": 4, "flavour": "Blue Raspberry", "servings": "60 Servings", "goal": "Strength & Stamina", "image": "https://via.placeholder.com/300x200?text=N.O.-Xplode" },
+    { "name": "Psychotic Pre-Workout", "price": "₹1,699", "discount": "28%", "category": "Pre-Workout", "brand": "Insane Labz", "rating": 4, "flavour": "Watermelon", "servings": "35 Servings", "goal": "Endurance & Pump", "image": "https://via.placeholder.com/300x200?text=Psychotic+Pre-Workout" },
+    { "name": "Pre-Kaged", "price": "₹2,299", "discount": "22%", "category": "Pre-Workout", "brand": "Kaged Muscle", "rating": 5, "flavour": "Cherry Bomb", "servings": "20 Servings", "goal": "Muscle Growth", "image": "https://via.placeholder.com/300x200?text=Pre-Kaged" },
+    { "name": "Mr. Hyde Pre-Workout", "price": "₹1,599", "discount": "30%", "category": "Pre-Workout", "brand": "ProSupps", "rating": 4, "flavour": "Grape", "servings": "40 Servings", "goal": "Focus & Power", "image": "https://via.placeholder.com/300x200?text=Mr+Hyde+Pre-Workout" },
+    { "name": "Nitraflex Pre-Workout", "price": "₹1,899", "discount": "26%", "category": "Pre-Workout", "brand": "GAT Sport", "rating": 4, "flavour": "Pineapple", "servings": "30 Servings", "goal": "Pump & Strength", "image": "https://via.placeholder.com/300x200?text=Nitraflex+Pre-Workout" },
+    { "name": "Gold Standard Pre-Workout", "price": "₹2,299", "discount": "24%", "category": "Pre-Workout", "brand": "ON", "rating": 5, "flavour": "Green Apple", "servings": "30 Servings", "goal": "Endurance & Energy", "image": "https://via.placeholder.com/300x200?text=Gold+Standard+Pre-Workout" },
+    { "name": "Total War Pre-Workout", "price": "₹1,799", "discount": "27%", "category": "Pre-Workout", "brand": "Redcon1", "rating": 4, "flavour": "Sour Gummy", "servings": "30 Servings", "goal": "Strength & Power", "image": "https://via.placeholder.com/300x200?text=Total+War+Pre-Workout" },
+    { "name": "Legion Pulse Pre-Workout", "price": "₹2,499", "discount": "18%", "category": "Pre-Workout", "brand": "Legion", "rating": 5, "flavour": "Blueberry Lemonade", "servings": "30 Servings", "goal": "Clean Energy & Focus", "image": "https://via.placeholder.com/300x200?text=Legion+Pulse+Pre-Workout" },
+    { "name": "RSP AminoLean", "price": "₹1,499", "discount": "32%", "category": "Pre-Workout", "brand": "RSP Nutrition", "rating": 4, "flavour": "Mango", "servings": "50 Servings", "goal": "Fat Loss & Energy", "image": "https://via.placeholder.com/300x200?text=RSP+AminoLean" },
+    { "name": "Beyond Raw LIT", "price": "₹1,899", "discount": "23%", "category": "Pre-Workout", "brand": "GNC", "rating": 4, "flavour": "Orange Mango", "servings": "30 Servings", "goal": "Performance & Pump", "image": "https://via.placeholder.com/300x200?text=Beyond+Raw+LIT" },
+    { "name": "Cobra Labs The Curse", "price": "₹1,799", "discount": "29%", "category": "Pre-Workout", "brand": "Cobra Labs", "rating": 4, "flavour": "Green Apple", "servings": "50 Servings", "goal": "Explosive Energy", "image": "https://via.placeholder.com/300x200?text=The+Curse" },
+    { "name": "Bucked Up Pre-Workout", "price": "₹2,099", "discount": "20%", "category": "Pre-Workout", "brand": "Bucked Up", "rating": 5, "flavour": "Strawberry Kiwi", "servings": "30 Servings", "goal": "Power & Endurance", "image": "https://via.placeholder.com/300x200?text=Bucked+Up+Pre-Workout" },
+    { "name": "Vintage Blast", "price": "₹2,499", "discount": "15%", "category": "Pre-Workout", "brand": "Old School Labs", "rating": 5, "flavour": "Lemon Lime", "servings": "20 Servings", "goal": "Sustained Energy", "image": "https://via.placeholder.com/300x200?text=Vintage+Blast" },
+    { "name": "Gorilla Mode Pre-Workout", "price": "₹2,599", "discount": "10%", "category": "Pre-Workout", "brand": "Gorilla Mind", "rating": 5, "flavour": "Tiger’s Blood", "servings": "40 Servings", "goal": "Extreme Performance", "image": "https://via.placeholder.com/300x200?text=Gorilla+Mode+Pre-Workout" },
+    { "name": "Ryse Pre-Workout", "price": "₹2,199", "discount": "19%", "category": "Pre-Workout", "brand": "Ryse", "rating": 5, "flavour": "Smarties", "servings": "30 Servings", "goal": "Pump & Strength", "image": "https://via.placeholder.com/300x200?text=Ryse+Pre-Workout" },
+    { "name": "Blackwolf Pre-Workout", "price": "₹2,799", "discount": "12%", "category": "Pre-Workout", "brand": "Blackwolf", "rating": 5, "flavour": "Tropical Punch", "servings": "30 Servings", "goal": "Elite Performance", "image": "https://via.placeholder.com/300x200?text=Blackwolf+Pre-Workout" }
+];
+ 
+        const productGrid = document.getElementById('productGrid');
+ 
+        // Function to render products
+        function renderProducts(filteredProducts) {
+            productGrid.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    ${product.discount ? `<div class="discount">${product.discount} OFF</div>` : ''}
+                    <h3>${product.name}</h3>
+                    <p>${product.price}</p>
+                    <p>Category: ${product.category}</p>
+                    <p>Brand: ${product.brand}</p>
+                    <p>Rating: ${product.rating}★</p>
+                    <p>Flavour: ${product.flavour}</p>
+                    <p>Servings: ${product.servings}</p>
+                    <p>Goal: ${product.goal}</p>
+                `;
+                productGrid.appendChild(productCard);
+            });
+        }
+ 
+        // Initial render with all products
+        renderProducts(products);
+ 
+        // Filter function
+        function filterProducts() {
+            const selectedCategories = [...document.querySelectorAll('.filter-category:checked')].map(input => input.value);
+            const selectedDiscounts = [...document.querySelectorAll('.filter-discount:checked')].map(input => input.value);
+            const maxPrice = parseInt(document.querySelector('.filter-price').value);
+            const selectedBrands = [...document.querySelectorAll('.filter-brand:checked')].map(input => input.value);
+            const selectedRatings = [...document.querySelectorAll('.filter-rating:checked')].map(input => input.value);
+            const selectedFlavours = [...document.querySelectorAll('.filter-flavour:checked')].map(input => input.value);
+            const selectedServings = [...document.querySelectorAll('.filter-servings:checked')].map(input => input.value);
+            const selectedGoals = [...document.querySelectorAll('.filter-goal:checked')].map(input => input.value);
+ 
+            const filteredProducts = products.filter(product => {
+                return (
+                    (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
+                    (selectedDiscounts.length === 0 || selectedDiscounts.some(d => parseInt(d) <= parseInt(product.discount))) &&
+                    (maxPrice >= parseInt(product.price.replace('₹', '').replace(',', ''))) &&
+                    (selectedBrands.length === 0 || selectedBrands.includes(product.brand)) &&
+                    (selectedRatings.length === 0 || selectedRatings.includes(String(product.rating))) &&
+                    (selectedFlavours.length === 0 || selectedFlavours.includes(product.flavour)) &&
+                    (selectedServings.length === 0 || selectedServings.includes(product.servings)) &&
+                    (selectedGoals.length === 0 || selectedGoals.includes(product.goal))
+                );
+            });
+ 
+            renderProducts(filteredProducts);
+        }
+ 
+        // Add event listeners
+        document.querySelectorAll('.filter-category').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelectorAll('.filter-discount').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelector('.filter-price').addEventListener('input', filterProducts);
+        document.querySelectorAll('.filter-brand').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelectorAll('.filter-rating').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelectorAll('.filter-flavour').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelectorAll('.filter-servings').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelectorAll('.filter-goal').forEach(input => input.addEventListener('change', filterProducts));
+ 
+        // Clear filters
+        document.querySelector('.clear-filters').addEventListener('click', () => {
+            document.querySelectorAll('.filter-category').forEach(input => input.checked = false);
+            document.querySelectorAll('.filter-discount').forEach(input => input.checked = false);
+            document.querySelector('.filter-price').value = 5000;
+            document.querySelectorAll('.filter-brand').forEach(input => input.checked = false);
+            document.querySelectorAll('.filter-rating').forEach(input => input.checked = false);
+            document.querySelectorAll('.filter-flavour').forEach(input => input.checked = false);
+            document.querySelectorAll('.filter-servings').forEach(input => input.checked = false);
+            document.querySelectorAll('.filter-goal').forEach(input => input.checked = false);
+ 
+            renderProducts(products);
+        });
+    </script>
+ 
+</body>
+ 
+</html>
+ 

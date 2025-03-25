@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nutrabay Registration</title>
+  <style>
+    body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #f4f4f4; /* Light gray background */
+}
+
+.container {
+  width: 100%; /* Make container 100% of the viewport width */
+  max-width: 300px; /* Limit the container width to 300px */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff; /* White background for container */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333; /* Darker text color */
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%; /* Make inputs take up full width of container */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+button {
+  background-color: #4CAF50; /* Green button color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%; /* Make the button the full width of the container */
+}
+
+.google-btn {
+  background-color: #4285F4; /* Google blue */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #666; /* Gray text color */
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.new-user-offer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  color: #333; /* Text color for offer */
+}
+
+.new-user-offer span {
+  font-weight: bold;
+  color: #333;
+}
+
+.change-email {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.mobile-number {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Ensure the mobile number section uses full container width */
+}
+
+.mobile-number select {
+  width: 70px; /* Slightly reduce the width of the country code dropdown */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.mobile-number input {
+  width: calc(100% - 80px); /* Take up the remaining space for the mobile number input */
+}
+
+.otp-input {
+  display: flex;
+  align-items: center;
+}
+
+.otp-input input {
+  width: 75%; /* Make the OTP input box a bit smaller */
+  margin-right: 10px;
+}
+
+.password-info {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer a {
+  margin-left: 10px;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="new-user-offer">
+    <p>NEW USER OFFER: <span>7% off on all brands</span></p>
+    <p>Use Code: <span>FitGear7</span></p>
+  </div>
+
+  <div class="container">
+    <h1>REGISTER</h1>
+
+    <div>
+      <input type="text" placeholder="Email" value="vahuibbfvd@gmail.com">
+      <a href="#" class="change-email">Change</a>
+    </div>
+
+    <div class="mobile-number">
+      <select>
+        <option value="+91">+91</option> 
+        {/* Add more country codes here */}
+      </select>
+      <input type="text" placeholder="Mobile Number" value="2222222222">
+    </div>
+
+    <p>OTP Sent: You'll receive an OTP on your Mobile number for verification.</p>
+
+    <div class="otp-input">
+      <input type="text" placeholder="Enter OTP" maxlength="6">
+      <button id="resendOtp">Resend OTP</button>
+    </div>
+
+    <div>
+      <input type="text" placeholder="Full Name" value="John Doe"> 
+    </div>
+
+    <div>
+      <input type="password" placeholder="Create new password" value="• • • • • •"> 
+    </div>
+
+    <button>Continue</button>
+
+    <p>By continuing, you agree to FitGear's Terms of Use and Privacy Policy.</p>
+    <p>Facing issue with Login? Email us at <a href="mailto:friends@FitGear.com">friends@FitGear.com</a></p>
+  </div>
+
+  <footer>
+    <div>
+      <a href="#">Help Center</a> | <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('resendOtp').addEventListener('click', function() {
+      // Implement OTP resend logic here (e.g., make an API call)
+      alert('OTP resent!'); // Replace with actual OTP resend logic
+    });
+  </script>
+
+</body>
+</html>

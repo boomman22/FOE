@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .navbar .search-bar {
+            width: 40%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .nav-icons button {
+            background: #ff6600;
+            border: none;
+            padding: 8px 12px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+
+        .filters {
+            width: 18%;
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .filters h3 {
+            margin-bottom: 15px;
+            text-align: center;
+            background: #ff6600;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .filter-section {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .filter-section h4 {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .filter-section label {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .filter-section input {
+            margin-right: 10px;
+        }
+
+        .filter-section input[type="range"] {
+            width: 100%;
+        }
+
+        .products {
+            width: 80%;
+            margin-left: 2%;
+        }
+
+        .products h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
+        .product-card {
+            width: 30%;
+            background: white;
+            padding: 15px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .discount {
+            background: green;
+            color: white;
+            padding: 5px;
+            font-size: 12px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 3px;
+        }
+
+        .product-card h3 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .clear-filters {
+            background: #ff6600;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .clear-filters:hover {
+            background: #e65c00;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .filters {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .products {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .product-card {
+                width: 45%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">FITGEAR</div>
+        <input type="text" placeholder="Search Products, Categories, Brands and More" class="search-bar">
+        <div class="nav-icons">
+            <button>Login</button>
+            <button>Cart 🛒</button>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <aside class="filters">
+            <h3>Filter Products</h3>
+
+            <div class="filter-section">
+                <h4>Category</h4>
+                <label><input type="checkbox" class="filter-category" value="Whey Protein"> Whey Protein</label>
+                <label><input type="checkbox" class="filter-category" value="Vegan Protein"> Vegan Protein</label>
+                <label><input type="checkbox" class="filter-category" value="Protein Blends"> Protein Blends</label>
+                <label><input type="checkbox" class="filter-category" value="Mass Gainers"> Mass Gainers</label>
+            </div>
+
+            <div class="filter-section">
+                <h4>Discount</h4>
+                <label><input type="checkbox" class="filter-discount" value="10%"> 10% or more</label>
+                <label><input type="checkbox" class="filter-discount" value="20%"> 20% or more</label>
+                <label><input type="checkbox" class="filter-discount" value="30%"> 30% or more</label>
+                <label><input type="checkbox" class="filter-discount" value="40%"> 40% or more</label>
+            </div>
+
+            <div class="filter-section">
+                <h4>Price Range</h4>
+                <input type="range" min="500" max="5000" class="filter-price">
+            </div>
+
+            <div class="filter-section">
+                <h4>Brand</h4>
+                <label><input type="checkbox" class="filter-brand" value="Nutrabay"> Nutrabay</label>
+                <label><input type="checkbox" class="filter-brand" value="ON"> ON (Optimum Nutrition)</label>
+                <label><input type="checkbox" class="filter-brand" value="MuscleBlaze"> MuscleBlaze</label>
+                <label><input type="checkbox" class="filter-brand" value="MyProtein"> MyProtein</label>
+            </div>
+
+            <div class="filter-section">
+                <h4>Ratings</h4>
+                <label><input type="checkbox" class="filter-rating" value="4"> 4★ & Above</label>
+                <label><input type="checkbox" class="filter-rating" value="3"> 3★ & Above</label>
+            </div>
+
+            <div class="filter-section">
+                <h4>Flavour</h4>
+                <label><input type="checkbox" class="filter-flavour" value="Chocolate"> Chocolate</label>
+                <label><input type="checkbox" class="filter-flavour" value="Vanilla"> Vanilla</label>
+                <label><input type="checkbox" class="filter-flavour" value="Strawberry"> Strawberry</label>
+                <label><input type="checkbox" class="filter-flavour" value="Cookies & Cream"> Cookies & Cream</label>
+            </div>
+
+            <div class="filter-section">
+                <h4>Servings</h4>
+                <label><input type="checkbox" class="filter-servings" value="30 Servings"> 30 Servings</label>
+                <label><input type="checkbox" class="filter-servings" value="60 Servings"> 60 Servings</label>
+                <label><input type="checkbox" class="filter-servings" value="90 Servings"> 90 Servings</label>
+            </div>
+
+            <div class="filter-section">
+                <h4>Goal</h4>
+                <label><input type="checkbox" class="filter-goal" value="Muscle Gain"> Muscle Gain</label>
+                <label><input type="checkbox" class="filter-goal" value="Weight Loss"> Weight Loss</label>
+                <label><input type="checkbox" class="filter-goal" value="Recovery"> Recovery</label>
+            </div>
+
+            <button class="clear-filters">Clear Filters</button>
+
+        </aside>
+
+        <section class="products">
+            <h2>Protein Powders</h2>
+            <div class="product-grid" id="productGrid">
+                <!-- Dynamic product cards will be inserted here -->
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const products =
+        [
+            { name: "Nutrabay Creatine Monohydrate", price: "₹799", discount: "15%", category: "Creatine", brand: "Nutrabay", rating: 4.5, flavour: "Unflavoured", servings: "100 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Nutrabay+Creatine" },
+            { name: "MuscleBlaze Creatine Monohydrate", price: "₹899", discount: "20%", category: "Creatine", brand: "MuscleBlaze", rating: 4.2, flavour: "Unflavoured", servings: "60 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=MuscleBlaze+Creatine" },
+            { name: "ON (Optimum Nutrition) Creatine Monohydrate", price: "₹1,799", discount: "18%", category: "Creatine", brand: "Optimum Nutrition", rating: 4.7, flavour: "Unflavoured", servings: "120 Servings", goal: "Strength & Endurance", image: "https://via.placeholder.com/300x200?text=ON+Creatine" },
+            { name: "MyProtein Creatine Monohydrate", price: "₹1,199", discount: "25%", category: "Creatine", brand: "MyProtein", rating: 4.5, flavour: "Unflavoured", servings: "100 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=MyProtein+Creatine" },
+            { name: "HealthKart Creatine Monohydrate", price: "₹899", discount: "10%", category: "Creatine", brand: "HealthKart", rating: 4.1, flavour: "Unflavoured", servings: "60 Servings", goal: "Strength & Muscle Mass", image: "https://via.placeholder.com/300x200?text=HealthKart+Creatine" },
+            { name: "GNC Pro Performance Creatine Monohydrate", price: "₹1,350", discount: "30%", category: "Creatine", brand: "GNC", rating: 4.4, flavour: "Unflavoured", servings: "60 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=GNC+Creatine" },
+            { name: "MuscleTech Creatine Monohydrate", price: "₹1,500", discount: "15%", category: "Creatine", brand: "MuscleTech", rating: 4.3, flavour: "Unflavoured", servings: "120 Servings", goal: "Power & Strength", image: "https://via.placeholder.com/300x200?text=MuscleTech+Creatine" },
+            { name: "Kaged Muscle Creatine HCL", price: "₹2,200", discount: "20%", category: "Creatine", brand: "Kaged Muscle", rating: 4.8, flavour: "Unflavoured", servings: "60 Servings", goal: "Muscle Gain & Endurance", image: "https://via.placeholder.com/300x200?text=Kaged+Muscle+Creatine" },
+            { name: "Dymatize Creatine Monohydrate", price: "₹1,700", discount: "10%", category: "Creatine", brand: "Dymatize", rating: 4.6, flavour: "Unflavoured", servings: "100 Servings", goal: "Muscle Mass & Recovery", image: "https://via.placeholder.com/300x200?text=Dymatize+Creatine" },
+            { name: "BSN Creatine DNA", price: "₹1,499", discount: "20%", category: "Creatine", brand: "BSN", rating: 4.2, flavour: "Unflavoured", servings: "60 Servings", goal: "Performance & Endurance", image: "https://via.placeholder.com/300x200?text=BSN+Creatine" },
+            { name: "ProSupps Creatine Monohydrate", price: "₹1,300", discount: "15%", category: "Creatine", brand: "ProSupps", rating: 4.0, flavour: "Unflavoured", servings: "60 Servings", goal: "Power & Endurance", image: "https://via.placeholder.com/300x200?text=ProSupps+Creatine" },
+            { name: "Muscletech Cell-Tech Creatine", price: "₹2,200", discount: "10%", category: "Creatine", brand: "Muscletech", rating: 4.4, flavour: "Fruit Punch", servings: "60 Servings", goal: "Muscle Gain & Power", image: "https://via.placeholder.com/300x200?text=Muscletech+CellTech" },
+            { name: "Evlution Nutrition Creatine 5000", price: "₹1,299", discount: "20%", category: "Creatine", brand: "Evlution Nutrition", rating: 4.3, flavour: "Unflavoured", servings: "100 Servings", goal: "Strength & Muscle Mass", image: "https://via.placeholder.com/300x200?text=Evlution+Creatine" },
+            { name: "GAT Creatine", price: "₹1,100", discount: "25%", category: "Creatine", brand: "GAT", rating: 4.0, flavour: "Unflavoured", servings: "60 Servings", goal: "Strength & Endurance", image: "https://via.placeholder.com/300x200?text=GAT+Creatine" },
+            { name: "Cellucor C4 Creatine", price: "₹1,400", discount: "15%", category: "Creatine", brand: "Cellucor", rating: 4.5, flavour: "Fruit Punch", servings: "30 Servings", goal: "Strength & Performance", image: "https://via.placeholder.com/300x200?text=Cellucor+C4" },
+            { name: "AllMax Creatine Monohydrate", price: "₹1,350", discount: "10%", category: "Creatine", brand: "AllMax", rating: 4.4, flavour: "Unflavoured", servings: "100 Servings", goal: "Muscle Gain & Strength", image: "https://via.placeholder.com/300x200?text=AllMax+Creatine" },
+            { name: "RSP Nutrition Creatine Monohydrate", price: "₹1,000", discount: "30%", category: "Creatine", brand: "RSP Nutrition", rating: 4.2, flavour: "Unflavoured", servings: "60 Servings", goal: "Power & Muscle Mass", image: "https://via.placeholder.com/300x200?text=RSP+Creatine" },
+            { name: "Klean Athlete Klean Creatine", price: "₹2,000", discount: "15%", category: "Creatine", brand: "Klean Athlete", rating: 4.5, flavour: "Unflavoured", servings: "90 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Klean+Athlete+Creatine" },
+            { name: "Redcon1 Creatine Monohydrate", price: "₹1,600", discount: "10%", category: "Creatine", brand: "Redcon1", rating: 4.6, flavour: "Unflavoured", servings: "120 Servings", goal: "Performance & Strength", image: "https://via.placeholder.com/300x200?text=Redcon1+Creatine" },
+            { name: "JYM Supplement Science Creatine", price: "₹2,100", discount: "25%", category: "Creatine", brand: "JYM", rating: 4.3, flavour: "Unflavoured", servings: "90 Servings", goal: "Muscle Growth & Endurance", image: "https://via.placeholder.com/300x200?text=JYM+Creatine" },
+            { name: "Klean Creatine by Klean Athlete", price: "₹1,950", discount: "15%", category: "Creatine", brand: "Klean Athlete", rating: 4.5, flavour: "Unflavoured", servings: "100 Servings", goal: "Performance & Muscle Mass", image: "https://via.placeholder.com/300x200?text=Klean+Creatine" },
+            { name: "Kre Alkalyn Creatine", price: "₹1,799", discount: "20%", category: "Creatine", brand: "Kre Alkalyn", rating: 4.6, flavour: "Unflavoured", servings: "60 Servings", goal: "Muscle Strength & Endurance", image: "https://via.placeholder.com/300x200?text=Kre+Alkalyn+Creatine" },
+            { name: "ProLab Creatine", price: "₹1,400", discount: "15%", category: "Creatine", brand: "ProLab", rating: 4.2, flavour: "Unflavoured", servings: "80 Servings", goal: "Strength & Muscle Mass", image: "https://via.placeholder.com/300x200?text=ProLab+Creatine" },
+            { name: "TruCreatine Creatine Monohydrate", price: "₹1,299", discount: "10%", category: "Creatine", brand: "TruCreatine", rating: 4.3, flavour: "Unflavoured", servings: "100 Servings", goal: "Power & Muscle Gain", image: "https://via.placeholder.com/300x200?text=TruCreatine+Creatine" }
+        ];
+
+        const productGrid = document.getElementById('productGrid');
+
+        // Function to render products
+        function renderProducts(filteredProducts) {
+            productGrid.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    ${product.discount ? `<div class="discount">${product.discount} OFF</div>` : ''}
+                    <h3>${product.name}</h3>
+                    <p>${product.price}</p>
+                    <p>Category: ${product.category}</p>
+                    <p>Brand: ${product.brand}</p>
+                    <p>Rating: ${product.rating}★</p>
+                    <p>Flavour: ${product.flavour}</p>
+                    <p>Servings: ${product.servings}</p>
+                    <p>Goal: ${product.goal}</p>
+                `;
+                productGrid.appendChild(productCard);
+            });
+        }
+
+        // Initial render with all products
+        renderProducts(products);
+
+        // Filter function
+        function filterProducts() {
+            const selectedCategories = [...document.querySelectorAll('.filter-category:checked')].map(input => input.value);
+            const selectedDiscounts = [...document.querySelectorAll('.filter-discount:checked')].map(input => input.value);
+            const maxPrice = parseInt(document.querySelector('.filter-price').value);
+            const selectedBrands = [...document.querySelectorAll('.filter-brand:checked')].map(input => input.value);
+            const selectedRatings = [...document.querySelectorAll('.filter-rating:checked')].map(input => input.value);
+            const selectedFlavours = [...document.querySelectorAll('.filter-flavour:checked')].map(input => input.value);
+            const selectedServings = [...document.querySelectorAll('.filter-servings:checked')].map(input => input.value);
+            const selectedGoals = [...document.querySelectorAll('.filter-goal:checked')].map(input => input.value);
+
+            const filteredProducts = products.filter(product => {
+                return (
+                    (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
+                    (selectedDiscounts.length === 0 || selectedDiscounts.some(d => parseInt(d) <= parseInt(product.discount))) &&
+                    (maxPrice >= parseInt(product.price.replace('₹', '').replace(',', ''))) &&
+                    (selectedBrands.length === 0 || selectedBrands.includes(product.brand)) &&
+                    (selectedRatings.length === 0 || selectedRatings.includes(String(product.rating))) &&
+                    (selectedFlavours.length === 0 || selectedFlavours.includes(product.flavour)) &&
+                    (selectedServings.length === 0 || selectedServings.includes(product.servings)) &&
+                    (selectedGoals.length === 0 || selectedGoals.includes(product.goal))
+                );
+            });
+
+            renderProducts(filteredProducts);
+        }
+
+        // Add event listeners
+        document.querySelectorAll('.filter-category').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelectorAll('.filter-discount').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelector('.filter-price').addEventListener('input', filterProducts);
+        document.querySelectorAll('.filter-brand').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelectorAll('.filter-rating').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelectorAll('.filter-flavour').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelectorAll('.filter-servings').forEach(input => input.addEventListener('change', filterProducts));
+        document.querySelectorAll('.filter-goal').forEach(input => input.addEventListener('change', filterProducts));
+
+        // Clear filters
+        document.querySelector('.clear-filters').addEventListener('click', () => {
+            document.querySelectorAll('.filter-category').forEach(input => input.checked = false);
+            document.querySelectorAll('.filter-discount').forEach(input => input.checked = false);
+            document.querySelector('.filter-price').value = 5000;
+            document.querySelectorAll('.filter-brand').forEach(input => input.checked = false);
+            document.querySelectorAll('.filter-rating').forEach(input => input.checked = false);
+            document.querySelectorAll('.filter-flavour').forEach(input => input.checked = false);
+            document.querySelectorAll('.filter-servings').forEach(input => input.checked = false);
+            document.querySelectorAll('.filter-goal').forEach(input => input.checked = false);
+
+            renderProducts(products);
+        });
+    </script>
+
+</body>
+
+</html>
