@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
- 
+
         .navbar {
             background: #1a1a1a;
             color: white;
@@ -21,19 +21,19 @@
             align-items: center;
             padding: 15px 20px;
         }
- 
+
         .navbar .logo {
             font-size: 22px;
             font-weight: bold;
         }
- 
+
         .navbar .search-bar {
             width: 40%;
             padding: 8px;
             border: none;
             border-radius: 5px;
         }
- 
+
         .nav-icons button {
             background: #ff6600;
             border: none;
@@ -41,12 +41,12 @@
             color: white;
             cursor: pointer;
         }
- 
+
         .container {
             display: flex;
             padding: 20px;
         }
- 
+
         .filters {
             width: 18%;
             background: #fff;
@@ -54,7 +54,7 @@
             border-radius: 10px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         }
- 
+
         .filters h3 {
             margin-bottom: 15px;
             text-align: center;
@@ -63,49 +63,49 @@
             padding: 10px;
             border-radius: 5px;
         }
- 
+
         .filter-section {
             margin-bottom: 15px;
             padding: 10px;
             border-bottom: 1px solid #ddd;
         }
- 
+
         .filter-section h4 {
             margin-bottom: 8px;
             color: #333;
         }
- 
+
         .filter-section label {
             display: flex;
             align-items: center;
             margin: 5px 0;
         }
- 
+
         .filter-section input {
             margin-right: 10px;
         }
- 
+
         .filter-section input[type="range"] {
             width: 100%;
         }
- 
+
         .products {
             width: 80%;
             margin-left: 2%;
         }
- 
+
         .products h2 {
             text-align: center;
             margin-bottom: 20px;
         }
- 
+
         .product-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
             justify-content: space-between;
         }
- 
+
         .product-card {
             width: 30%;
             background: white;
@@ -115,33 +115,61 @@
             position: relative;
             cursor: pointer;
             transition: transform 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
         }
- 
+
         .product-card:hover {
             transform: scale(1.05);
         }
- 
+
+        .product-image-container {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
         .product-card img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 5px;
         }
- 
+
         .discount {
             background: green;
             color: white;
             padding: 5px;
             font-size: 12px;
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 20px;
+            left: 20px;
             border-radius: 3px;
         }
- 
+
         .product-card h3 {
             font-size: 16px;
             margin: 10px 0;
+            text-align: center;
+            margin-top: auto;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
         }
- 
+
+        .product-info {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
         .clear-filters {
             background: #ff6600;
             color: white;
@@ -152,35 +180,35 @@
             text-align: center;
             border-radius: 5px;
         }
- 
+
         .clear-filters:hover {
             background: #e65c00;
         }
- 
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
             }
- 
+
             .filters {
                 width: 100%;
                 margin-bottom: 20px;
             }
- 
+
             .products {
                 width: 100%;
                 margin-left: 0;
             }
- 
+
             .product-card {
                 width: 45%;
             }
         }
     </style>
 </head>
- 
+
 <body>
- 
+
     <nav class="navbar">
         <div class="logo">FITGEAR</div>
         <input type="text" placeholder="Search Products, Categories, Brands and More" class="search-bar">
@@ -189,12 +217,12 @@
             <button>Cart 🛒</button>
         </div>
     </nav>
- 
+
     <div class="container">
- 
+
         <aside class="filters">
             <h3>Filter Products</h3>
- 
+
             <div class="filter-section">
                 <h4>Category</h4>
                 <label><input type="checkbox" class="filter-category" value="Whey Protein"> Whey Protein</label>
@@ -202,7 +230,7 @@
                 <label><input type="checkbox" class="filter-category" value="Protein Blends"> Protein Blends</label>
                 <label><input type="checkbox" class="filter-category" value="Mass Gainers"> Mass Gainers</label>
             </div>
- 
+
             <div class="filter-section">
                 <h4>Discount</h4>
                 <label><input type="checkbox" class="filter-discount" value="10%"> 10% or more</label>
@@ -210,12 +238,12 @@
                 <label><input type="checkbox" class="filter-discount" value="30%"> 30% or more</label>
                 <label><input type="checkbox" class="filter-discount" value="40%"> 40% or more</label>
             </div>
- 
+
             <div class="filter-section">
                 <h4>Price Range</h4>
                 <input type="range" min="500" max="5000" class="filter-price">
             </div>
- 
+
             <div class="filter-section">
                 <h4>Brand</h4>
                 <label><input type="checkbox" class="filter-brand" value="Nutrabay"> Nutrabay</label>
@@ -223,13 +251,13 @@
                 <label><input type="checkbox" class="filter-brand" value="MuscleBlaze"> MuscleBlaze</label>
                 <label><input type="checkbox" class="filter-brand" value="MyProtein"> MyProtein</label>
             </div>
- 
+
             <div class="filter-section">
                 <h4>Ratings</h4>
                 <label><input type="checkbox" class="filter-rating" value="4"> 4★ & Above</label>
                 <label><input type="checkbox" class="filter-rating" value="3"> 3★ & Above</label>
             </div>
- 
+
             <div class="filter-section">
                 <h4>Flavour</h4>
                 <label><input type="checkbox" class="filter-flavour" value="Chocolate"> Chocolate</label>
@@ -237,62 +265,62 @@
                 <label><input type="checkbox" class="filter-flavour" value="Strawberry"> Strawberry</label>
                 <label><input type="checkbox" class="filter-flavour" value="Cookies & Cream"> Cookies & Cream</label>
             </div>
- 
+
             <div class="filter-section">
                 <h4>Servings</h4>
                 <label><input type="checkbox" class="filter-servings" value="30 Servings"> 30 Servings</label>
                 <label><input type="checkbox" class="filter-servings" value="60 Servings"> 60 Servings</label>
                 <label><input type="checkbox" class="filter-servings" value="90 Servings"> 90 Servings</label>
             </div>
- 
+
             <div class="filter-section">
                 <h4>Goal</h4>
                 <label><input type="checkbox" class="filter-goal" value="Muscle Gain"> Muscle Gain</label>
                 <label><input type="checkbox" class="filter-goal" value="Weight Loss"> Weight Loss</label>
                 <label><input type="checkbox" class="filter-goal" value="Recovery"> Recovery</label>
             </div>
- 
+
             <button class="clear-filters">Clear Filters</button>
- 
+
         </aside>
- 
+
         <section class="products">
             <h2>Protein Powders</h2>
             <div class="product-grid" id="productGrid">
                 <!-- Dynamic product cards will be inserted here -->
             </div>
         </section>
- 
+
     </div>
- 
+
     <script>
         const products = [
-    { name: "Nutrabay Gold Whey", price: "₹1,249", discount: "33%", category: "Whey Protein", brand: "Nutrabay", rating: 4, flavour: "Chocolate", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Nutrabay+Gold+Whey" },
-    { name: "Nutrabay Pure Whey", price: "₹1,149", discount: "34%", category: "Whey Protein", brand: "Nutrabay", rating: 4, flavour: "Vanilla", servings: "60 Servings", goal: "Weight Loss", image: "https://via.placeholder.com/300x200?text=Nutrabay+Pure+Whey" },
-    { name: "Pea Protein Isolate", price: "₹949", discount: "36%", category: "Vegan Protein", brand: "MuscleBlaze", rating: 3, flavour: "Strawberry", servings: "90 Servings", goal: "Recovery", image: "https://via.placeholder.com/300x200?text=Pea+Protein+Isolate" },
-    { name: "Isolate Whey Protein", price: "₹1,499", discount: "30%", category: "Whey Protein", brand: "ON", rating: 4, flavour: "Cookies & Cream", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Isolate+Whey+Protein" },
-    { name: "MuscleBlaze Whey Protein", price: "₹2,199", discount: "25%", category: "Whey Protein", brand: "MuscleBlaze", rating: 5, flavour: "Chocolate", servings: "60 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=MuscleBlaze+Whey+Protein" },
-    { name: "MyProtein Whey Isolate", price: "₹1,699", discount: "20%", category: "Whey Protein", brand: "MyProtein", rating: 4, flavour: "Vanilla", servings: "30 Servings", goal: "Weight Loss", image: "https://via.placeholder.com/300x200?text=MyProtein+Whey+Isolate" },
-    { name: "Vegan Protein Blend", price: "₹1,899", discount: "15%", category: "Vegan Protein", brand: "MyProtein", rating: 4, flavour: "Strawberry", servings: "90 Servings", goal: "Recovery", image: "https://via.placeholder.com/300x200?text=Vegan+Protein+Blend" },
-    { name: "Iso100 Hydrolyzed Whey", price: "₹2,999", discount: "10%", category: "Whey Protein", brand: "Dymatize", rating: 5, flavour: "Chocolate", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Iso100+Hydrolyzed+Whey" },
-    { name: "BSN Syntha-6", price: "₹2,499", discount: "20%", category: "Protein Blends", brand: "BSN", rating: 4, flavour: "Cookies & Cream", servings: "60 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=BSN+Syntha-6" },
-    { name: "Vega Sport Protein", price: "₹2,199", discount: "25%", category: "Vegan Protein", brand: "Vega", rating: 5, flavour: "Vanilla", servings: "30 Servings", goal: "Recovery", image: "https://via.placeholder.com/300x200?text=Vega+Sport+Protein" },
-    { name: "Dymatize Elite Whey", price: "₹1,899", discount: "15%", category: "Whey Protein", brand: "Dymatize", rating: 4, flavour: "Chocolate Peanut Butter", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Dymatize+Elite+Whey" },
-    { name: "GNC Pro Performance Whey", price: "₹2,299", discount: "18%", category: "Whey Protein", brand: "GNC", rating: 4, flavour: "Vanilla", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=GNC+Pro+Performance+Whey" },
-    { name: "Kaged Muscle Micropure Whey", price: "₹2,499", discount: "12%", category: "Whey Protein", brand: "Kaged Muscle", rating: 4, flavour: "Chocolate Cake", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Kaged+Muscle+Micropure+Whey" },
-    { name: "TrueFit Protein", price: "₹2,099", discount: "10%", category: "Protein Blends", brand: "Orgain", rating: 4, flavour: "Vanilla", servings: "20 Servings", goal: "Weight Loss", image: "https://via.placeholder.com/300x200?text=TrueFit+Protein" },
-    { name: "Bulk Natural Pure Whey Isolate", price: "₹1,749", discount: "10%", category: "Whey Protein", brand: "Bulk Natural", rating: 4, flavour: "Strawberry", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Bulk+Natural+Pure+Whey+Isolate" },
-    { name: "BPI Sports Whey HD", price: "₹1,899", discount: "15%", category: "Whey Protein", brand: "BPI Sports", rating: 5, flavour: "Chocolate Brownie", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=BPI+Sports+Whey+HD" },
-    { name: "Cellucor Cor-Performance Whey", price: "₹2,299", discount: "18%", category: "Whey Protein", brand: "Cellucor", rating: 5, flavour: "Peanut Butter Marshmallow", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Cellucor+Cor-Performance+Whey" },
-    { name: "MuscleTech NitroTech", price: "₹2,799", discount: "10%", category: "Whey Protein", brand: "MuscleTech", rating: 5, flavour: "Chocolate Fudge", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=MuscleTech+NitroTech" },
-    { name: "Muscletech Platinum Whey", price: "₹2,499", discount: "15%", category: "Whey Protein", brand: "Muscletech", rating: 4, flavour: "Vanilla", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Muscletech+Platinum+Whey" },
-    { name: "FitMiss Delight Protein", price: "₹2,149", discount: "10%", category: "Protein Blends", brand: "FitMiss", rating: 4, flavour: "Chocolate", servings: "30 Servings", goal: "Weight Loss", image: "https://via.placeholder.com/300x200?text=FitMiss+Delight+Protein" },
-    { name: "Klean Athlete Whey", price: "₹2,599", discount: "15%", category: "Whey Protein", brand: "Klean Athlete", rating: 4, flavour: "Vanilla", servings: "30 Servings", goal: "Muscle Gain", image: "https://via.placeholder.com/300x200?text=Klean+Athlete+Whey" }
-];
- 
- 
+            { name: "Nutrabay Gold Whey - Chocolate", price: "₹1,249", discount: "33%", category: "Whey Protein", brand: "Nutrabay", rating: 4, flavour: "Chocolate", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/Nutrabay Gold Whey - Chocolate.png" },
+            { name: "Nutrabay Pure Whey - Vanilla", price: "₹1,149", discount: "34%", category: "Whey Protein", brand: "Nutrabay", rating: 4, flavour: "Vanilla", servings: "60 Servings", goal: "Weight Loss", image: "img/proteinpowders/Nutrabay Pure Whey - Vanilla.png" },
+            { name: "MuscleBlaze Pea Protein Isolate - Strawberry", price: "₹949", discount: "36%", category: "Vegan Protein", brand: "MuscleBlaze", rating: 3, flavour: "Strawberry", servings: "90 Servings", goal: "Recovery", image: "img/proteinpowders/MuscleBlaze Pea Protein Isolate - Strawberry.png" },
+            { name: "ON Isolate Whey Protein - Cookies & Cream", price: "₹1,499", discount: "30%", category: "Whey Protein", brand: "ON", rating: 4, flavour: "Cookies & Cream", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/ON Isolate Whey Protein - Cookies & Cream.png" },
+            { name: "MuscleBlaze Whey Protein - Chocolate", price: "₹2,199", discount: "25%", category: "Whey Protein", brand: "MuscleBlaze", rating: 5, flavour: "Chocolate", servings: "60 Servings", goal: "Muscle Gain", image: "img/proteinpowders/MuscleBlaze Whey Protein - Chocolate.png" },
+            { name: "MyProtein Whey Isolate - Vanilla", price: "₹1,699", discount: "20%", category: "Whey Protein", brand: "MyProtein", rating: 4, flavour: "Vanilla", servings: "30 Servings", goal: "Weight Loss", image: "img/proteinpowders/MyProtein Whey Isolate - Vanilla.png" },
+            { name: "MyProtein Vegan Protein Blend - Strawberry", price: "₹1,899", discount: "15%", category: "Vegan Protein", brand: "MyProtein", rating: 4, flavour: "Strawberry", servings: "90 Servings", goal: "Recovery", image: "img/proteinpowders/MyProtein Vegan Protein Blend - Strawberry.png" },
+            { name: "Dymatize Iso100 Hydrolyzed Whey - Chocolate", price: "₹2,999", discount: "10%", category: "Whey Protein", brand: "Dymatize", rating: 5, flavour: "Chocolate", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/Dymatize Iso100 Hydrolyzed Whey - Chocolate.png" },
+            { name: "BSN Syntha-6 - Cookies & Cream", price: "₹2,499", discount: "20%", category: "Protein Blends", brand: "BSN", rating: 4, flavour: "Cookies & Cream", servings: "60 Servings", goal: "Muscle Gain", image: "img/proteinpowders/BSN Syntha-6 - Cookies & Cream.png" },
+            { name: "Vega Sport Protein - Vanilla", price: "₹2,199", discount: "25%", category: "Vegan Protein", brand: "Vega", rating: 5, flavour: "Vanilla", servings: "30 Servings", goal: "Recovery", image: "img/proteinpowders/Vega Sport Protein - Vanilla.png" },
+            { name: "Dymatize Elite Whey - Chocolate Peanut Butter", price: "₹1,899", discount: "15%", category: "Whey Protein", brand: "Dymatize", rating: 4, flavour: "Chocolate Peanut Butter", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/Dymatize Elite Whey - Chocolate Peanut Butter.png" },
+            { name: "GNC Pro Performance Whey - Vanilla", price: "₹2,299", discount: "18%", category: "Whey Protein", brand: "GNC", rating: 4, flavour: "Vanilla", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/GNC Pro Performance Whey - Vanilla.png" },
+            { name: "Kaged Muscle Micropure Whey - Chocolate Cake", price: "₹2,499", discount: "12%", category: "Whey Protein", brand: "Kaged Muscle", rating: 4, flavour: "Chocolate Cake", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/Kaged Muscle Micropure Whey - Chocolate Cake.png" },
+            { name: "Orgain TrueFit Protein - Vanilla", price: "₹2,099", discount: "10%", category: "Protein Blends", brand: "Orgain", rating: 4, flavour: "Vanilla", servings: "20 Servings", goal: "Weight Loss", image: "img/proteinpowders/Orgain TrueFit Protein - Vanilla.png" },
+            { name: "Bulk Natural Pure Whey Isolate - Strawberry", price: "₹1,749", discount: "10%", category: "Whey Protein", brand: "Bulk Natural", rating: 4, flavour: "Strawberry", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/Bulk Natural Pure Whey Isolate - Strawberry.png" },
+            { name: "BPI Sports Whey HD - Chocolate Brownie", price: "₹1,899", discount: "15%", category: "Whey Protein", brand: "BPI Sports", rating: 5, flavour: "Chocolate Brownie", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/BPI Sports Whey HD - Chocolate Brownie.png" },
+            { name: "Cellucor Cor-Performance Whey - Peanut Butter Marshmallow", price: "₹2,299", discount: "18%", category: "Whey Protein", brand: "Cellucor", rating: 5, flavour: "Peanut Butter Marshmallow", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/Cellucor Cor-Performance Whey - Peanut Butter Marshmallow.png" },
+            { name: "MuscleTech NitroTech - Chocolate Fudge", price: "₹2,799", discount: "10%", category: "Whey Protein", brand: "MuscleTech", rating: 5, flavour: "Chocolate Fudge", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/MuscleTech NitroTech - Chocolate Fudge.png" },
+            { name: "MuscleTech Platinum Whey - Vanilla", price: "₹2,499", discount: "15%", category: "Whey Protein", brand: "MuscleTech", rating: 4, flavour: "Vanilla", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/MuscleTech Platinum Whey - Vanilla.png" },
+            { name: "FitMiss Delight Protein - Chocolate", price: "₹2,149", discount: "10%", category: "Protein Blends", brand: "FitMiss", rating: 4, flavour: "Chocolate", servings: "30 Servings", goal: "Weight Loss", image: "img/proteinpowders/FitMiss Delight Protein - Chocolate.png" },
+            { name: "Klean Athlete Whey - Vanilla", price: "₹2,599", discount: "15%", category: "Whey Protein", brand: "Klean Athlete", rating: 4, flavour: "Vanilla", servings: "30 Servings", goal: "Muscle Gain", image: "img/proteinpowders/Klean Athlete Whey - Vanilla.png" }
+        ];
+
+
         const productGrid = document.getElementById('productGrid');
- 
+
         // Function to render products
         function renderProducts(filteredProducts) {
             productGrid.innerHTML = '';
@@ -300,24 +328,27 @@
                 const productCard = document.createElement('div');
                 productCard.classList.add('product-card');
                 productCard.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    ${product.discount ? `<div class="discount">${product.discount} OFF</div>` : ''}
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}">
+                        ${product.discount ? `<div class="discount">${product.discount} OFF</div>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-price">${product.price}</div>
+                        <p>Brand: ${product.brand}</p>
+                        <p>Rating: ${product.rating}★</p>
+                        <p>Flavour: ${product.flavour}</p>
+                        <p>Servings: ${product.servings}</p>
+                        <p>Goal: ${product.goal}</p>
+                    </div>
                     <h3>${product.name}</h3>
-                    <p>${product.price}</p>
-                    <p>Category: ${product.category}</p>
-                    <p>Brand: ${product.brand}</p>
-                    <p>Rating: ${product.rating}★</p>
-                    <p>Flavour: ${product.flavour}</p>
-                    <p>Servings: ${product.servings}</p>
-                    <p>Goal: ${product.goal}</p>
                 `;
                 productGrid.appendChild(productCard);
             });
         }
- 
+
         // Initial render with all products
         renderProducts(products);
- 
+
         // Filter function
         function filterProducts() {
             const selectedCategories = [...document.querySelectorAll('.filter-category:checked')].map(input => input.value);
@@ -328,7 +359,7 @@
             const selectedFlavours = [...document.querySelectorAll('.filter-flavour:checked')].map(input => input.value);
             const selectedServings = [...document.querySelectorAll('.filter-servings:checked')].map(input => input.value);
             const selectedGoals = [...document.querySelectorAll('.filter-goal:checked')].map(input => input.value);
- 
+
             const filteredProducts = products.filter(product => {
                 return (
                     (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
@@ -341,10 +372,10 @@
                     (selectedGoals.length === 0 || selectedGoals.includes(product.goal))
                 );
             });
- 
+
             renderProducts(filteredProducts);
         }
- 
+
         // Add event listeners
         document.querySelectorAll('.filter-category').forEach(input => input.addEventListener('change', filterProducts));
         document.querySelectorAll('.filter-discount').forEach(input => input.addEventListener('change', filterProducts));
@@ -354,7 +385,7 @@
         document.querySelectorAll('.filter-flavour').forEach(input => input.addEventListener('change', filterProducts));
         document.querySelectorAll('.filter-servings').forEach(input => input.addEventListener('change', filterProducts));
         document.querySelectorAll('.filter-goal').forEach(input => input.addEventListener('change', filterProducts));
- 
+
         // Clear filters
         document.querySelector('.clear-filters').addEventListener('click', () => {
             document.querySelectorAll('.filter-category').forEach(input => input.checked = false);
@@ -365,11 +396,11 @@
             document.querySelectorAll('.filter-flavour').forEach(input => input.checked = false);
             document.querySelectorAll('.filter-servings').forEach(input => input.checked = false);
             document.querySelectorAll('.filter-goal').forEach(input => input.checked = false);
- 
+
             renderProducts(products);
         });
     </script>
- 
+
 </body>
- 
+
 </html>
